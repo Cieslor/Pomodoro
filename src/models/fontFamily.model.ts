@@ -1,4 +1,1 @@
-export type FontFamily =
-  | "'Kumbh Sans', sans-serif"
-  | "'Roboto Slab', serif"
-  | "'Space Mono', monospace";
+export type FontFamily = '"Kumbh Sans"' | '"Roboto Slab"' | '"Space Mono"';

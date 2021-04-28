@@ -20,7 +20,7 @@ const defaultStylesContextValues: {
   fontFamily: FontFamily;
   primaryColor: PrimaryColor;
 } = {
-  fontFamily: "'Kumbh Sans', sans-serif",
+  fontFamily: '"Kumbh Sans"',
   primaryColor: "#F87070",
 };
 
