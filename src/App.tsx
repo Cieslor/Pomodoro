@@ -1,5 +1,6 @@
 import React from "react";
 import { Heading, Text, Box, Button } from "@chakra-ui/react";
+import { NumberInput } from "src/components";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Button variant="primary-dark" size="sm">
         Test
       </Button>
+      <NumberInput />
     </div>
   );
 };

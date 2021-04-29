@@ -38,6 +38,9 @@ export const StylesProvider: React.FC<IProps> = ({ children }) => {
           ghostWhite: "#EFF1FA",
           spaceCadetDark: "#161932",
         },
+        numberInput: {
+          arrow: "rgba(30, 33, 63, 0.25)",
+        },
       },
       textStyles: {
         h1: {

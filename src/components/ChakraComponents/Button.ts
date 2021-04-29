@@ -5,15 +5,15 @@ export const Button = {
   },
   sizes: {
     md: {
-      fontSize: "16px",
-      px: "25px",
-      py: "20px",
+      fontSize: "md",
+      px: "1.5rem",
+      py: "1.25rem",
       h: "auto",
     },
     sm: {
-      fontSize: "14px",
-      px: "25px",
-      py: "16px",
+      fontSize: "sm",
+      px: "1.5rem",
+      py: "1rem",
       h: "auto",
     },
   },
