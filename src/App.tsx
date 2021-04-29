@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Text, Box } from "@chakra-ui/react";
+import { Heading, Text, Box, Button } from "@chakra-ui/react";
 
 const App = () => {
   return (
@@ -11,6 +11,12 @@ const App = () => {
         Test
       </Heading>
       <Box textStyle="h1">hello</Box>
+      <Button variant="primary-light" size="md">
+        Pomodoro
+      </Button>
+      <Button variant="primary-dark" size="sm">
+        Test
+      </Button>
     </div>
   );
 };
