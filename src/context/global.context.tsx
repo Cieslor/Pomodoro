@@ -1,10 +1,14 @@
 import React from "react";
-import { StylesContextProvider } from "src/context";
+import { StylesContextProvider, TimeContextProvider } from "src/context";
 
 interface IProps {
   children: JSX.Element;
 }
 
 export const GlobalContext: React.FC<IProps> = ({ children }) => {
-  return <StylesContextProvider>{children}</StylesContextProvider>;
+  return (
+    <StylesContextProvider>
+      <TimeContextProvider>{children}</TimeContextProvider>
+    </StylesContextProvider>
+  );
 };

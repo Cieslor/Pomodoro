@@ -16,10 +16,7 @@ interface IStylesActionsContext {
   setPrimaryColor: React.Dispatch<React.SetStateAction<PrimaryColor>>;
 }
 
-const defaultStylesContextValues: {
-  fontFamily: FontFamily;
-  primaryColor: PrimaryColor;
-} = {
+const defaultStylesContextValues: IStylesContext = {
   fontFamily: '"Kumbh Sans"',
   primaryColor: "#F87070",
 };
