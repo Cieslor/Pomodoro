@@ -13,7 +13,11 @@ import {
   FormLabel,
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { NumberInput } from "src/components";
+import {
+  NumberInput,
+  FontFamilySelectionGroup,
+  PrimaryColorSelectionGroup,
+} from "src/components";
 
 interface ISettingsProps {
   isOpen: boolean;
@@ -45,7 +49,7 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
         </ModalHeader>
         <Divider color="pomodoro.royalBlueDark" />
         <ModalBody px={[6, 10]} pt={6} pb="5rem">
-          <Box>
+          <Box textAlign={["center", "left"]}>
             <Box
               as="h4"
               textStyle="h4"
@@ -110,6 +114,45 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
             </FormControl>
           </Stack>
           <Divider color="pomodoro.royalBlueDark" />
+          <Box
+            display="flex"
+            flexDirection={["column", "row"]}
+            justifyContent={["flex-start", "space-between"]}
+            alignItems="center"
+            py={6}
+          >
+            <Box as="h4" textStyle="h4" color="pomodoro.spaceCadetDark">
+              {t("Settings:FONT")}
+            </Box>
+            <FontFamilySelectionGroup
+              options={[
+                { name: "Aa", value: '"Kumbh Sans"' },
+                { name: "Aa", value: '"Roboto Slab"' },
+                { name: "Aa", value: '"Space Mono"' },
+              ]}
+              selectionName="fontFamily"
+              defaultValue='"Kumbh Sans"'
+              onChange={(value) => console.log(value)}
+            />
+          </Box>
+          <Divider color="pomodoro.royalBlueDark" />
+          <Box
+            display="flex"
+            flexDirection={["column", "row"]}
+            justifyContent={["flex-start", "space-between"]}
+            alignItems="center"
+            py={6}
+          >
+            <Box as="h4" textStyle="h4" color="pomodoro.spaceCadetDark">
+              {t("Settings:COLOR")}
+            </Box>
+            <PrimaryColorSelectionGroup
+              options={["#F87070", "#70F3F8", "#D881F8"]}
+              selectionName="primaryColor"
+              defaultValue="#F87070"
+              onChange={(value) => console.log(value)}
+            />
+          </Box>
         </ModalBody>
       </ModalContent>
     </Modal>
