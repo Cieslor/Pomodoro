@@ -1,2 +1,2 @@
-export * from "./SelectionOption";
-export * from "./FontFamilySelectionGroup";
+export * from "./FontFamily";
+export * from "./PrimaryColor";

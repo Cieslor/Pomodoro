@@ -1,7 +1,10 @@
 import React from "react";
 import { Box, useRadio } from "@chakra-ui/react";
 
-export const SelectionOption: React.FC = ({ children, ...restProps }) => {
+export const FontFamilySelectionOption: React.FC = ({
+  children,
+  ...restProps
+}) => {
   const { getInputProps, getCheckboxProps, state } = useRadio(restProps);
 
   const input = getInputProps();
@@ -13,7 +16,7 @@ export const SelectionOption: React.FC = ({ children, ...restProps }) => {
       <Box
         {...checkbox}
         position="relative"
-        display="inline-flex"
+        display="flex"
         justifyContent="center"
         alignItems="center"
         cursor="pointer"
@@ -37,9 +40,10 @@ export const SelectionOption: React.FC = ({ children, ...restProps }) => {
             width: "120%",
             height: "120%",
             bg: "white",
-            border: "1px solid pomodoro.ghostWhite",
+            border: "1px solid",
+            borderColor: "pomodoro.ghostWhite",
             borderRadius: "50%",
-            zIndex: "-1",
+            zIndex: -1,
             opacity: 0,
             transition: "opacity 0.15s linear",
           },

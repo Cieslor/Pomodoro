@@ -1,6 +1,6 @@
 import React from "react";
 import { useRadioGroup, HStack, Text, TypographyProps } from "@chakra-ui/react";
-import { SelectionOption } from "src/components";
+import { FontFamilySelectionOption } from "src/components";
 
 interface IFontFamilySelectionGroupProps {
   options: { name: string; value: string | number }[];
@@ -28,14 +28,14 @@ export const FontFamilySelectionGroup: React.FC<IFontFamilySelectionGroupProps> 
       {options.map((option) => {
         const radio = getRadioProps({ value: option.value });
         return (
-          <SelectionOption key={option.value} {...radio}>
+          <FontFamilySelectionOption key={option.value} {...radio}>
             <Text
               p={0}
               fontFamily={option.value as TypographyProps["fontFamily"]}
             >
               {option.name}
             </Text>
-          </SelectionOption>
+          </FontFamilySelectionOption>
         );
       })}
     </HStack>
