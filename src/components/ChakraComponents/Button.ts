@@ -4,6 +4,12 @@ export const Button = {
     borderRadius: "26.5px",
   },
   sizes: {
+    long: {
+      fontSize: "md",
+      px: "3rem",
+      py: "1rem",
+      h: "auto",
+    },
     md: {
       fontSize: "md",
       px: "1.5rem",
