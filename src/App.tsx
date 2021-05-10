@@ -1,14 +1,14 @@
 import React from "react";
-import { useDisclosure, Button } from "@chakra-ui/react";
-import { Settings } from "src/components";
+import { Flex } from "@chakra-ui/react";
+import { Header, Footer, Timers } from "src/components";
 
 const App = () => {
-  const { isOpen, onClose, onOpen } = useDisclosure();
   return (
-    <div className="App">
-      <Button onClick={onOpen}>Open modal</Button>
-      <Settings isOpen={isOpen} onClose={onClose} />
-    </div>
+    <Flex className="App" w="100%" h="100vh" flexDirection="column">
+      <Header />
+      <Timers />
+      <Footer />
+    </Flex>
   );
 };
 
