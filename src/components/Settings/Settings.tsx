@@ -39,16 +39,11 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
   const { pomodoroTime, shortBreakTime, longBreakTime } = useTimeContext();
 
   const { setPrimaryColor, setFontFamily } = useStylesActionsContext();
-  const {
-    setPomodoroTime,
-    setShortBreakTime,
-    setLongBreakTime,
-  } = useTimeActionsContext();
+  const { setPomodoroTime, setShortBreakTime, setLongBreakTime } =
+    useTimeActionsContext();
 
-  const [
-    temporarySettingsState,
-    setTemporarySettingsState,
-  ] = useState<ISettingsState>({} as ISettingsState);
+  const [temporarySettingsState, setTemporarySettingsState] =
+    useState<ISettingsState>({} as ISettingsState);
 
   const saveSettings = () => {
     const {

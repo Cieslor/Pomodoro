@@ -1,11 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { StylesContextProvider, TimeContextProvider } from "src/context";
 
-interface IProps {
-  children: JSX.Element;
-}
-
-export const GlobalContext: React.FC<IProps> = ({ children }) => {
+export const GlobalContext: FC = ({ children }) => {
   return (
     <StylesContextProvider>
       <TimeContextProvider>{children}</TimeContextProvider>

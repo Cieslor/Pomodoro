@@ -1,9 +1,11 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  FC,
+} from "react";
 import { timeLocalStorage } from "src/helpers";
-
-interface IProps {
-  children: JSX.Element;
-}
 
 interface ITimeContext {
   pomodoroTime: number;
@@ -30,16 +32,10 @@ export const useTimeContext: () => ITimeContext = () => useContext(TimeContext);
 export const useTimeActionsContext: () => ITimeActionsContext = () =>
   useContext(TimeActionsContext);
 
-export const TimeContextProvider: React.FC<IProps> = ({ children }) => {
-  const [pomodoroTime, setPomodoroTime] = useState<number>(
-    defaultTimeContextValues.pomodoroTime
-  );
-  const [shortBreakTime, setShortBreakTime] = useState<number>(
-    defaultTimeContextValues.shortBreakTime
-  );
-  const [longBreakTime, setLongBreakTime] = useState<number>(
-    defaultTimeContextValues.longBreakTime
-  );
+export const TimeContextProvider: FC = ({ children }) => {
+  const [pomodoroTime, setPomodoroTime] = useState<number>(0);
+  const [shortBreakTime, setShortBreakTime] = useState<number>(0);
+  const [longBreakTime, setLongBreakTime] = useState<number>(0);
 
   useEffect(() => {
     const pomodoroTimeFromStorage = timeLocalStorage.getPomodoroTime();
