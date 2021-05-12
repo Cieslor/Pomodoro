@@ -1,7 +1,7 @@
-import React, { FC, useRef, useEffect, useState } from "react";
+import React, { FC, useRef, useEffect, useState, useLayoutEffect } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
-import { useTheme, Box, Text } from "@chakra-ui/react";
-
+import { useTheme, Box } from "@chakra-ui/react";
+import { TimerInner } from "src/components";
 interface ITimerProps {
   duration: number;
 }
@@ -22,11 +22,16 @@ export const Timer: FC<ITimerProps> = ({ duration }) => {
     setIsPlaying(!isPlaying);
   };
 
+  const reset = () => {
+    setTimerKey(timerKey + 1);
+    setIsPlaying(false);
+  };
+
   const restart = () => {
     setTimerKey(timerKey + 1);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleResize = () => {
       setContainersWidth(
         containersRef.current ? containersRef.current.offsetWidth - 27 : 0
@@ -51,6 +56,7 @@ export const Timer: FC<ITimerProps> = ({ duration }) => {
       w="100%"
       maxW="410px"
       bg="gradients.timerGradient"
+      boxShadow="-50px -50px 100px #272C5A, 50px 50px 100px #121530"
       borderRadius="50%"
       sx={{
         "&::before": {
@@ -73,70 +79,29 @@ export const Timer: FC<ITimerProps> = ({ duration }) => {
         bg="pomodoro.spaceCadetDark"
         ref={containersRef}
       >
-        <CountdownCircleTimer
-          key={timerKey}
-          size={containersWidth ?? 0}
-          strokeWidth={13.5}
-          isPlaying={isPlaying}
-          duration={duration}
-          colors={primary}
-          trailColor={spaceCadetDark}
-        >
-          {({ remainingTime }) => (
-            <TimerInner
-              duration={duration}
-              isPlaying={isPlaying}
-              remainingTime={remainingTime ?? 0}
-              toggleTimer={toggleTimer}
-              restart={restart}
-            />
-          )}
-        </CountdownCircleTimer>
+        {containersWidth && (
+          <CountdownCircleTimer
+            key={timerKey}
+            size={containersWidth}
+            strokeWidth={13.5}
+            isPlaying={isPlaying}
+            duration={duration}
+            colors={primary}
+            trailColor={spaceCadetDark}
+          >
+            {({ remainingTime }) => (
+              <TimerInner
+                duration={duration}
+                isPlaying={isPlaying}
+                remainingTime={remainingTime ?? 0}
+                toggleTimer={toggleTimer}
+                restart={restart}
+                reset={reset}
+              />
+            )}
+          </CountdownCircleTimer>
+        )}
       </Box>
-    </Box>
-  );
-};
-
-interface ITimerInnerProps {
-  duration: number;
-  remainingTime: number;
-  restart: () => void;
-  toggleTimer: () => void;
-  isPlaying: boolean;
-}
-
-const TimerInner: FC<ITimerInnerProps> = ({
-  duration,
-  remainingTime,
-  restart,
-  toggleTimer,
-  isPlaying,
-}) => {
-  const test = restart;
-  return (
-    <Box>
-      <Text
-        textStyle="h1"
-        color="pomodoro.periwinkleCrayola"
-        textAlign="center"
-      >
-        {remainingTime}
-      </Text>
-      {remainingTime !== 0 && (
-        <Text
-          textStyle="h3"
-          color="pomodoro.periwinkleCrayola"
-          pl="15px"
-          cursor="pointer"
-          onClick={toggleTimer}
-        >
-          {duration === remainingTime && !isPlaying
-            ? "Start"
-            : isPlaying
-            ? "Pause"
-            : "Continue"}
-        </Text>
-      )}
     </Box>
   );
 };

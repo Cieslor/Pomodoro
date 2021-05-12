@@ -1,10 +1,16 @@
 import React, { FC } from "react";
-import { StylesContextProvider, TimeContextProvider } from "src/context";
+import {
+  StylesContextProvider,
+  TimeContextProvider,
+  TimerHelperContextProvider,
+} from "src/context";
 
 export const GlobalContext: FC = ({ children }) => {
   return (
     <StylesContextProvider>
-      <TimeContextProvider>{children}</TimeContextProvider>
+      <TimeContextProvider>
+        <TimerHelperContextProvider>{children}</TimerHelperContextProvider>
+      </TimeContextProvider>
     </StylesContextProvider>
   );
 };

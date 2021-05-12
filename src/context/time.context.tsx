@@ -46,6 +46,7 @@ export const TimeContextProvider: FC = ({ children }) => {
       setPomodoroTime(+pomodoroTimeFromStorage);
     } else {
       timeLocalStorage.setPomodoroTime(defaultTimeContextValues.pomodoroTime);
+      setPomodoroTime(defaultTimeContextValues.pomodoroTime);
     }
 
     if (shortBreakTimeFromStorage) {
@@ -54,12 +55,14 @@ export const TimeContextProvider: FC = ({ children }) => {
       timeLocalStorage.setShortBreakTime(
         defaultTimeContextValues.shortBreakTime
       );
+      setShortBreakTime(defaultTimeContextValues.shortBreakTime);
     }
 
     if (longBreakTimeFromStorage) {
       setLongBreakTime(+longBreakTimeFromStorage);
     } else {
       timeLocalStorage.setLongBreakTime(defaultTimeContextValues.longBreakTime);
+      setLongBreakTime(defaultTimeContextValues.longBreakTime);
     }
   }, []);
 
