@@ -24,6 +24,7 @@ import {
   useTimeContext,
   useStylesActionsContext,
   useTimeActionsContext,
+  useTimerHelperActionsContext,
 } from "src/context";
 import { FontFamily, ISettingsState, PrimaryColor } from "src/models";
 
@@ -39,16 +40,13 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
   const { pomodoroTime, shortBreakTime, longBreakTime } = useTimeContext();
 
   const { setPrimaryColor, setFontFamily } = useStylesActionsContext();
-  const {
-    setPomodoroTime,
-    setShortBreakTime,
-    setLongBreakTime,
-  } = useTimeActionsContext();
+  const { setPomodoroTime, setShortBreakTime, setLongBreakTime } =
+    useTimeActionsContext();
 
-  const [
-    temporarySettingsState,
-    setTemporarySettingsState,
-  ] = useState<ISettingsState>({} as ISettingsState);
+  const { setHideTimers } = useTimerHelperActionsContext();
+
+  const [temporarySettingsState, setTemporarySettingsState] =
+    useState<ISettingsState>({} as ISettingsState);
 
   const saveSettings = () => {
     const {
@@ -64,6 +62,8 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
     setPomodoroTime(temporaryPomodoroTime);
     setShortBreakTime(temporaryShortBreakTime);
     setLongBreakTime(temporaryLongBreakTime);
+
+    setHideTimers(false);
 
     onClose();
   };
@@ -134,15 +134,16 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
               </FormLabel>
               <NumberInput
                 min={1}
-                max={999}
+                max={60}
                 flex={1}
                 defaultValue={pomodoroTime}
-                onChange={(value) =>
+                onChange={(value) => {
                   setTemporarySettingsState((prevState) => ({
                     ...prevState,
                     temporaryPomodoroTime: +value,
-                  }))
-                }
+                  }));
+                  setHideTimers(true);
+                }}
               />
             </FormControl>
             <FormControl
@@ -163,15 +164,16 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
               </FormLabel>
               <NumberInput
                 min={1}
-                max={999}
+                max={60}
                 flex={1}
                 defaultValue={shortBreakTime}
-                onChange={(value) =>
+                onChange={(value) => {
                   setTemporarySettingsState((prevState) => ({
                     ...prevState,
                     temporaryShortBreakTime: +value,
-                  }))
-                }
+                  }));
+                  setHideTimers(true);
+                }}
               />
             </FormControl>
             <FormControl
@@ -192,15 +194,16 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
               </FormLabel>
               <NumberInput
                 min={1}
-                max={999}
+                max={60}
                 flex={1}
                 defaultValue={longBreakTime}
-                onChange={(value) =>
+                onChange={(value) => {
                   setTemporarySettingsState((prevState) => ({
                     ...prevState,
                     temporaryLongBreakTime: +value,
-                  }))
-                }
+                  }));
+                  setHideTimers(true);
+                }}
               />
             </FormControl>
           </Stack>

@@ -1,12 +1,19 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Flex } from "@chakra-ui/react";
 import { AnimateSharedLayout } from "framer-motion";
 import { PickerOption } from "src/components";
 
-const options = ["pomodoro", "short break", "long break"];
+interface IPickerProps {
+  options: string[];
+  pickOption: React.Dispatch<React.SetStateAction<string>>;
+  selectedOption: string;
+}
 
-export const Picker: FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>(options[0]);
+export const Picker: FC<IPickerProps> = ({
+  options,
+  pickOption,
+  selectedOption,
+}) => {
   return (
     <AnimateSharedLayout>
       <Flex
@@ -14,12 +21,14 @@ export const Picker: FC = () => {
         bg="pomodoro.spaceCadetDark"
         borderRadius="31.5px"
         p={2}
+        w="100%"
+        maxW="375px"
       >
         {options.map((option: string) => (
           <PickerOption
             key={option}
             optionName={option}
-            onClick={(option) => setSelectedOption(option)}
+            onClick={(option) => pickOption(option)}
             isSelected={option === selectedOption}
             layoutId="timer-option"
           />

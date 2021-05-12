@@ -42,6 +42,9 @@ export const StylesProvider: React.FC<IProps> = ({ children }) => {
         numberInput: {
           arrow: "rgba(30, 33, 63, 0.25)",
         },
+        gradients: {
+          timerGradient: "linear-gradient(315deg, #2E325A 0%, #0E112A 100%)",
+        },
       },
       textStyles: {
         h1: {
@@ -60,7 +63,7 @@ export const StylesProvider: React.FC<IProps> = ({ children }) => {
           fontSize: ["11px", "16px"],
           fontWeight: 700,
           lineHeight: "120%",
-          letterSpacing: "15px",
+          letterSpacing: ["13px", "15px"],
           textTransform: "uppercase",
         },
         h4: {

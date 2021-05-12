@@ -1,10 +1,12 @@
-import React, { useState, createContext, useContext, useEffect } from "react";
+import React, {
+  useState,
+  createContext,
+  useContext,
+  useEffect,
+  FC,
+} from "react";
 import { FontFamily, PrimaryColor } from "src/models";
 import { stylesLocalStorage } from "src/helpers";
-
-interface IProps {
-  children: JSX.Element;
-}
 
 interface IStylesContext {
   fontFamily: FontFamily;
@@ -29,7 +31,7 @@ export const useStylesContext: () => IStylesContext = () =>
 export const useStylesActionsContext: () => IStylesActionsContext = () =>
   useContext(StylesActionsContext);
 
-export const StylesContextProvider: React.FC<IProps> = ({ children }) => {
+export const StylesContextProvider: FC = ({ children }) => {
   const [fontFamily, setFontFamily] = useState<FontFamily>(
     defaultStylesContextValues.fontFamily
   );

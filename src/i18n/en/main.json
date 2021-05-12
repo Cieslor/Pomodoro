@@ -1,3 +1,5 @@
 {
-  "RESTART": "Restart"
+  "RESTART": "Restart",
+  "PAUSE": "Pause",
+  "START": "Start"
 }
