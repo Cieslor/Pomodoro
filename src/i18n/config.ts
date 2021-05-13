@@ -22,6 +22,7 @@ i18n
     lng: "en",
     fallbackLng: "en",
     ns: ["Settings", "Main", "Common"],
+    defaultNS: "Common",
     debug: false,
     interpolation: {
       escapeValue: false,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useRadioGroup, HStack, Text, TypographyProps } from "@chakra-ui/react";
 import { FontFamilySelectionOption } from "src/components";
 
@@ -9,7 +9,7 @@ interface IFontFamilySelectionGroupProps {
   defaultValue: string | number;
 }
 
-export const FontFamilySelectionGroup: React.FC<IFontFamilySelectionGroupProps> = ({
+export const FontFamilySelectionGroup: FC<IFontFamilySelectionGroupProps> = ({
   options,
   selectionName,
   onChange,

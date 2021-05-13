@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box, useRadio } from "@chakra-ui/react";
 
 interface IPrimaryColorSelectionProps {
   backgroundColor: string;
 }
 
-export const PrimaryColorSelectionOption: React.FC<IPrimaryColorSelectionProps> = ({
+export const PrimaryColorSelectionOption: FC<IPrimaryColorSelectionProps> = ({
   children,
   backgroundColor,
   ...restProps

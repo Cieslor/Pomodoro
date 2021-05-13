@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
   NumberInput as ChakraNumberInput,
   NumberInputField,
@@ -9,9 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { ChevronUpIcon, ChevronDownIcon } from "@chakra-ui/icons";
 
-export const NumberInput: React.FC<NumberInputProps> = ({
-  ...numberInputProps
-}) => {
+export const NumberInput: FC<NumberInputProps> = ({ ...numberInputProps }) => {
   return (
     <ChakraNumberInput {...numberInputProps} variant="filled">
       <NumberInputField

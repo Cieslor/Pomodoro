@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 interface IPickerOptionProps {
   layoutId: string;
   isSelected: boolean;
-  onClick: (option: string) => void;
+  onClick: () => void;
   optionName: string;
 }
 
@@ -35,10 +35,11 @@ export const PickerOption: FC<IPickerOptionProps> = ({
       h="50px"
       borderRadius="26.5px"
       cursor="pointer"
-      onClick={() => onClick(optionName)}
+      onClick={onClick}
     >
       <Text
         textStyle="paragraph_small"
+        textTransform="lowercase"
         color={
           isSelected ? "pomodoro.spaceCadetDark" : "pomodoro.periwinkleCrayola"
         }

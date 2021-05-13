@@ -1,10 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box, useRadio } from "@chakra-ui/react";
 
-export const FontFamilySelectionOption: React.FC = ({
-  children,
-  ...restProps
-}) => {
+export const FontFamilySelectionOption: FC = ({ children, ...restProps }) => {
   const { getInputProps, getCheckboxProps, state } = useRadio(restProps);
 
   const input = getInputProps();

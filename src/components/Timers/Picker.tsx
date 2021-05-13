@@ -2,11 +2,12 @@ import React, { FC } from "react";
 import { Flex } from "@chakra-ui/react";
 import { AnimateSharedLayout } from "framer-motion";
 import { PickerOption } from "src/components";
+import { PickerOption as PickerOptionType } from "src/models";
 
 interface IPickerProps {
-  options: string[];
-  pickOption: React.Dispatch<React.SetStateAction<string>>;
-  selectedOption: string;
+  options: PickerOptionType[];
+  pickOption: (option: PickerOptionType) => void;
+  selectedOption: PickerOptionType;
 }
 
 export const Picker: FC<IPickerProps> = ({
@@ -24,12 +25,12 @@ export const Picker: FC<IPickerProps> = ({
         w="100%"
         maxW="375px"
       >
-        {options.map((option: string) => (
+        {options.map((option: PickerOptionType) => (
           <PickerOption
-            key={option}
-            optionName={option}
-            onClick={(option) => pickOption(option)}
-            isSelected={option === selectedOption}
+            key={option.key}
+            optionName={option.name}
+            onClick={() => pickOption(option)}
+            isSelected={option.key === selectedOption.key}
             layoutId="timer-option"
           />
         ))}
