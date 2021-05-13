@@ -2,16 +2,12 @@ import "@fontsource/roboto-slab/700.css";
 import "@fontsource/space-mono/700.css";
 import "@fontsource/kumbh-sans/700.css";
 
-import React, { useMemo } from "react";
+import React, { useMemo, FC } from "react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { useStylesContext } from "src/context";
 import { Button } from "src/components";
 
-interface IProps {
-  children: JSX.Element;
-}
-
-export const StylesProvider: React.FC<IProps> = ({ children }) => {
+export const StylesProvider: FC = ({ children }) => {
   const { primaryColor, fontFamily } = useStylesContext();
 
   const theme = useMemo(() => {

@@ -1,13 +1,21 @@
 import React, { FC, useState } from "react";
 import { Flex } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { Picker, Timer } from "src/components";
 import { useTimeContext, useTimerHelperContext } from "src/context";
-import { TimerTypes } from "src/models";
-
-const options = ["pomodoro", "short break", "long break"];
+import { TimerTypes, PickerOption } from "src/models";
 
 export const Timers: FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>(options[0]);
+  const { t } = useTranslation();
+  const options: PickerOption[] = [
+    { name: t("POMODORO"), key: "pomodoro" },
+    { name: t("SHORT_BREAK"), key: "short_break" },
+    { name: t("LONG_BREAK"), key: "long_break" },
+  ];
+
+  const [selectedOption, setSelectedOption] = useState<PickerOption>(
+    options[0]
+  );
   const { pomodoroTime, shortBreakTime, longBreakTime } = useTimeContext();
   const { hideTimers } = useTimerHelperContext();
 
@@ -15,24 +23,36 @@ export const Timers: FC = () => {
     <Flex flex={1} flexDirection="column" alignItems="center" p={5}>
       <Picker
         options={options}
-        pickOption={setSelectedOption}
+        pickOption={(option: PickerOption) => setSelectedOption(option)}
         selectedOption={selectedOption}
       />
       <Flex flex={1} justifyContent="center" alignItems="center" w="100%">
-        {selectedOption === TimerTypes.pomodoro &&
+        {selectedOption.key === TimerTypes.pomodoro &&
           pomodoroTime &&
           !hideTimers && (
-            <Timer key={TimerTypes.pomodoro} duration={pomodoroTime * 60} />
+            <Timer
+              key={TimerTypes.pomodoro}
+              duration={pomodoroTime * 60}
+              selectedOptionName={selectedOption.name}
+            />
           )}
-        {selectedOption === TimerTypes.shortBreak &&
+        {selectedOption.key === TimerTypes.shortBreak &&
           shortBreakTime &&
           !hideTimers && (
-            <Timer key={TimerTypes.shortBreak} duration={shortBreakTime * 60} />
+            <Timer
+              key={TimerTypes.shortBreak}
+              duration={shortBreakTime * 60}
+              selectedOptionName={selectedOption.name}
+            />
           )}
-        {selectedOption === TimerTypes.longBreak &&
+        {selectedOption.key === TimerTypes.longBreak &&
           longBreakTime &&
           !hideTimers && (
-            <Timer key={TimerTypes.longBreak} duration={longBreakTime * 60} />
+            <Timer
+              key={TimerTypes.longBreak}
+              duration={longBreakTime * 60}
+              selectedOptionName={selectedOption.name}
+            />
           )}
       </Flex>
     </Flex>

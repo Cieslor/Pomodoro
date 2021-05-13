@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useRadioGroup, HStack } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 import { PrimaryColorSelectionOption } from "src/components";
@@ -10,34 +10,30 @@ interface IPrimaryColorSelectionGroupProps {
   defaultValue: string | number;
 }
 
-export const PrimaryColorSelectionGroup: React.FC<IPrimaryColorSelectionGroupProps> = ({
-  options,
-  selectionName,
-  onChange,
-  defaultValue,
-}) => {
-  const { getRootProps, getRadioProps } = useRadioGroup({
-    name: selectionName,
-    defaultValue,
-    onChange,
-  });
+export const PrimaryColorSelectionGroup: FC<IPrimaryColorSelectionGroupProps> =
+  ({ options, selectionName, onChange, defaultValue }) => {
+    const { getRootProps, getRadioProps } = useRadioGroup({
+      name: selectionName,
+      defaultValue,
+      onChange,
+    });
 
-  const selectionGroup = getRootProps();
+    const selectionGroup = getRootProps();
 
-  return (
-    <HStack {...selectionGroup} spacing={4}>
-      {options.map((option) => {
-        const radio = getRadioProps({ value: option });
-        return (
-          <PrimaryColorSelectionOption
-            key={option}
-            {...radio}
-            backgroundColor={option.toString()}
-          >
-            <CheckIcon w={3} h={3} />
-          </PrimaryColorSelectionOption>
-        );
-      })}
-    </HStack>
-  );
-};
+    return (
+      <HStack {...selectionGroup} spacing={4}>
+        {options.map((option) => {
+          const radio = getRadioProps({ value: option });
+          return (
+            <PrimaryColorSelectionOption
+              key={option}
+              {...radio}
+              backgroundColor={option.toString()}
+            >
+              <CheckIcon w={3} h={3} />
+            </PrimaryColorSelectionOption>
+          );
+        })}
+      </HStack>
+    );
+  };

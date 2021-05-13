@@ -4,9 +4,10 @@ import { useTheme, Box } from "@chakra-ui/react";
 import { TimerInner } from "src/components";
 interface ITimerProps {
   duration: number;
+  selectedOptionName: string;
 }
 
-export const Timer: FC<ITimerProps> = ({ duration }) => {
+export const Timer: FC<ITimerProps> = ({ duration, selectedOptionName }) => {
   const {
     colors: {
       pomodoro: { primary, spaceCadetDark },
@@ -97,6 +98,7 @@ export const Timer: FC<ITimerProps> = ({ duration }) => {
                 toggleTimer={toggleTimer}
                 restart={restart}
                 reset={reset}
+                timerName={selectedOptionName}
               />
             )}
           </CountdownCircleTimer>

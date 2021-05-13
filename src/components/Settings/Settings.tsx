@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import {
   Button,
   Modal,
@@ -33,8 +33,8 @@ interface ISettingsProps {
   onClose: () => void;
 }
 
-export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
-  const { t } = useTranslation(["Settings", "Common"]);
+export const Settings: FC<ISettingsProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
 
   const { primaryColor, fontFamily } = useStylesContext();
   const { pomodoroTime, shortBreakTime, longBreakTime } = useTimeContext();
@@ -130,7 +130,7 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
                 flex={1}
                 mb={[0, 2]}
               >
-                {t("Common:POMODORO")}
+                {t("POMODORO")}
               </FormLabel>
               <NumberInput
                 min={1}
@@ -160,7 +160,7 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
                 flex={1}
                 mb={[0, 2]}
               >
-                {t("Common:SHORT_BREAK")}
+                {t("SHORT_BREAK")}
               </FormLabel>
               <NumberInput
                 min={1}
@@ -190,7 +190,7 @@ export const Settings: React.FC<ISettingsProps> = ({ isOpen, onClose }) => {
                 flex={1}
                 mb={[0, 2]}
               >
-                {t("Common:LONG_BREAK")}
+                {t("LONG_BREAK")}
               </FormLabel>
               <NumberInput
                 min={1}
