@@ -78,7 +78,7 @@ export const TimerInner: FC<ITimerInnerProps> = ({
           textAlign="center"
           onClick={restart}
         >
-          Restart
+          {t("RESTART")}
         </Text>
       )}
     </Box>
